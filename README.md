@@ -1,10 +1,10 @@
-# MURDTN
-Multi US modality radiomics for diagnosing TNs
+# SERNDBM
+Ma SE radiomics nomogram for diagnosing breast masses
 
 If you use this code in your research, consider citing:
 ```
 @article{
-  title={A comparative study of two radiomics-based blood flow models with Thyroid Imaging Reporting and Data System in predicting malignancy of thyroid nodules and reducing unnecessary fine-needle aspiration rate},
+  title={xxx},
   author={xxxx},
   journal={xxxx},
   year={xxxx},
@@ -28,7 +28,7 @@ If you use this code in your research, consider citing:
 
 ## Running
 
-1. Train Radiomics model, save the result in "./radiomics model/[BMUS\BMUS_CEUS\BMUS_SMI\ALL]/result"
+1. Train Radiomics model, save the result in "./radiomics model/[bmus\es]/result"
 ```
    RadiomicsModel.Rmd
 ```
