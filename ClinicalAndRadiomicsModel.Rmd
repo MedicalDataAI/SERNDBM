@@ -1,0 +1,74 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+Generating the clinical-radiomics model
+
+# model 1 (BMUS radiomics model) is BMUS Rad-score combined with composition, margin, and echogenic foci
+```{r}
+library("rms")
+library("ggplot2")
+library("pROC")
+df_clinical_radiomics <- read.csv(
+  file="./dataset/combind model/dfTrainNomo.csv", 
+  header=T, sep=',', stringsAsFactors = F)
+model1 <- rms::lrm(
+  formula="Label ~ prob + age + tumorSize", 
+  x=T,y=T, data = df_train_data)
+summary(model1)
+save(model1, file = "./dataset/combind model/result/model1.RData")
+nomo_model1 <- rms::nomogram(
+  model1,
+  fun=plogis,
+  fun.at=c(.001, .01, seq(.1,.9, by=.2), .99, .999),
+  lp=F,
+  maxscale=100,
+  funlabel="Risk")
+plot(nomo_model1, xfrac = 0.6)
+
+predictValue = predict(model1, df_clinical_radiomics)
+roc_obj <- pROC::roc(
+    response=df_clinical_radiomics$Label, 
+    predictor=plogis(predict(model1, df_clinical_radiomics)))
+best_threshold <- pROC::coords(roc_obj, "best", ret=c("threshold"), drop = T, transpose = TRUE)[1]
+print(sprintf("Cut-off value is %f.", best_threshold))
+plot(roc_feature_obj, main = "Model 1", lwd=3) 
+
+
+# model 2 (BMUS+CEUS radiomics model) is BMUS+CEUS Rad-score combined with composition, margin, echogenic foci, and enhancement direction
+```{r}
+library("rms")
+library("ggplot2")
+library("pROC")
+df_clinical_radiomics <- read.csv(
+  file="./dataset/combind model/dfTrainNomo.csv", 
+  header=T, sep=',', stringsAsFactors = F)
+model2 <- rms::lrm(
+  formula="Label ~ prob + prob_es + age + tumorSize", 
+  x=T,y=T, data = df_train_data)
+summary(model2)
+save(model2, file = "./dataset/combind model/result/model2.RData")
+nomo_model2 <- rms::nomogram(
+  model2,
+  fun=plogis,
+  fun.at=c(.001, .01, seq(.1,.9, by=.2), .99, .999),
+  lp=F,
+  maxscale=100,
+  funlabel="Risk")
+plot(nomo_model2, xfrac = 0.6)
+
+predictValue = predict(model2, df_clinical_radiomics)
+roc_obj <- pROC::roc(
+    response=df_clinical_radiomics$Label, 
+    predictor=plogis(predict(model2, df_clinical_radiomics)))
+best_threshold <- pROC::coords(roc_obj, "best", ret=c("threshold"), drop = T, transpose = TRUE)[1]
+print(sprintf("Cut-off value is %f.", best_threshold))
+plot(roc_feature_obj, main = "Model 2", lwd=3) 
+```
+
+

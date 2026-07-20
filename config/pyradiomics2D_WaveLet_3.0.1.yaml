@@ -1,0 +1,20 @@
+imageType:
+ Original: {}
+ Wavelet: {}
+
+featureClass:
+ shape:
+ firstorder:
+ glcm:
+ glrlm:
+ glszm:
+ gldm:
+ ngtdm:
+setting:
+ interpolator: 'sitkBSpline'
+ binWidth: 25
+ force2D: True
+ force2Ddimension: 0
+
+
+ 

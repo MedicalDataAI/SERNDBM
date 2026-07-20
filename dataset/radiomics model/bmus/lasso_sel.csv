@@ -1,0 +1,8 @@
+"x","y"
+-0.692943319404807,"(Intercept)"
+1.06671949320891,"original_shape_Maximum2DDiameterRow"
+0.0739364296995488,"original_glszm_SmallAreaLowGrayLevelEmphasis"
+-0.055052530480971,"wavelet.LH_glcm_ClusterTendency"
+-0.197001729582749,"wavelet.LH_glcm_MaximumProbability"
+0.0389657556216545,"wavelet.LH_glszm_ZoneEntropy"
+0.0614405577177983,"wavelet.HL_glszm_ZoneEntropy"

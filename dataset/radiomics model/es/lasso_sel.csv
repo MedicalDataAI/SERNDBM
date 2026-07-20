@@ -1,0 +1,8 @@
+"x","y"
+-0.642996056303676,"(Intercept)"
+0.073558892622192,"G_original_ngtdm_Contrast"
+0.0664813505280738,"G_wavelet.LH_glszm_ZoneEntropy"
+0.0450002552341019,"G_wavelet.HL_glszm_ZoneEntropy"
+-0.410507752863667,"G_wavelet.LL_firstorder_Median"
+0.428458299739676,"B_original_glszm_GrayLevelNonUniformity"
+-0.0127531018202777,"B_wavelet.HL_glszm_ZonePercentage"
