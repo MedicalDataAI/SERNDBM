@@ -4,7 +4,7 @@ Ma SE radiomics nomogram for diagnosing breast masses
 If you use this code in your research, consider citing:
 ```
 @article{
-  title={xxx},
+  title={Nomogram based on strain elastography radiomics for the differential diagnosis of breast masses: a prospective multicenter study},
   author={xxxx},
   journal={xxxx},
   year={xxxx},
